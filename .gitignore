@@ -161,3 +161,4 @@ cython_debug/
 
 .vscode/
 pytorch_model.bin
+pubmedbert*.h5
