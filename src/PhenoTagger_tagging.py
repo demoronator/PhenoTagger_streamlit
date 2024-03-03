@@ -194,7 +194,7 @@ def phenotagger_tag(infolder,para_set,outfolder):
         vocabfiles={'labelfile':'../dict/lable.vocab',
                     'checkpoint_path':'../models/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext/',
                     'lowercase':True}
-        modelfile='../models/pubmedbert_PT.h5'
+        modelfile='../models/pubmedbert_PT_v1.2.h5'
         
     else:
         vocabfiles={'labelfile':'../dict/lable.vocab',
@@ -267,7 +267,7 @@ if __name__=="__main__":
         os.makedirs(args.outfolder)
 
     para_set={
-              'model_type':'bioformer', # cnn, bioformer, pubmedbert or biobert
+              'model_type':'pubmedbert', # cnn, bioformer, pubmedbert or biobert
               'onlyLongest':True, # False: return overlap concepts, True only longgest
               'abbrRecog':True,# False: don't identify abbr, True: identify abbr
               'negation': True, #True:negation detection
