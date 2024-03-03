@@ -33,6 +33,10 @@ Issues and Stressors Discussed/Session Description: Client discussed experiencin
 
 Client stated that the argument is now resolved, and he has been communicating with his partner, though he has had thoughts such as “What’s the point? He doesn’t understand me.” Upon further exploration, this writer learned that, since Tuesday night, the client has been spending more time than usual on his mobile device at night, continuing to get a less than ideal amount of sleep (5-6 hours), and negatively impacting his energy level and mood. While the client did roll his eyes upon this writer bringing up his mobile phone use, he then laughed and stated, “I know, I know, I’m doing it to myself.”"""
 
+footer_text=\
+"""---
+**PhenoTagger on GitHub**: [Visit GitHub](https://github.com/ncbi-nlp/PhenoTagger)"""
+
 def main():
     st.set_page_config(page_title="PhenoTagger", page_icon="🩺")
 
@@ -50,6 +54,8 @@ def main():
     if st.button("Run Tagging"):
         result = bioTag(text, biotag_dic, nn_model, onlyLongest=True, abbrRecog=True, Threshold=0.95)
         st.write(result)
+
+    st.markdown(footer_text)
 
 if __name__ == "__main__":
     main()
