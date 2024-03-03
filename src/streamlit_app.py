@@ -24,6 +24,14 @@ def load_model():
 
     return biotag_dic, nn_model
 
+sample_text=\
+"""Client’s Subjective Concerns/Chief Complaint: “I’m starting to feel more depressed.” Client noted concerns about his mood, endorsing depressed mood, lethargy, insomnia, loss of energy and motivation, and urges to isolate from his romantic partner. 
+
+Clinical Observations: Client appeared disheveled, which is unusual for him, and a marked change since last session. Client sat in a hunched position upon the beginning of the session, and appeared tired, with slowed movements and dysthymic mood. He was attentive and cooperative, and had congruent and appropriate affect. Client denies suicidal ideation. 
+
+Issues and Stressors Discussed/Session Description: Client discussed experiencing increased difficulty with depressive symptoms beginning last week, following an argument with his romantic partner. Client reviewed the details of the argument, and stated that it occurred late on Tuesday night, causing him to get only 4 hours of sleep. Client has continued to attend work, and reports compliance with prescribed medication.
+
+Client stated that the argument is now resolved, and he has been communicating with his partner, though he has had thoughts such as “What’s the point? He doesn’t understand me.” Upon further exploration, this writer learned that, since Tuesday night, the client has been spending more time than usual on his mobile device at night, continuing to get a less than ideal amount of sleep (5-6 hours), and negatively impacting his energy level and mood. While the client did roll his eyes upon this writer bringing up his mobile phone use, he then laughed and stated, “I know, I know, I’m doing it to myself.”"""
 
 def main():
     st.set_page_config(page_title="PhenoTagger", page_icon="🩺")
@@ -35,8 +43,8 @@ def main():
 
     st.title("PhenoTagger")
     text = st.text_area(
-        "",
-        placeholder="Enter text here",
+        "Enter text here",
+        value=sample_text,
         height=650
     )
     if st.button("Run Tagging"):
