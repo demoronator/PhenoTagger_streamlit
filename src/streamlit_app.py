@@ -34,8 +34,12 @@ def main():
     biotag_dic, nn_model = load_model()
 
     st.title("PhenoTagger")
-    text = st.text_area("Enter text here")
-    if st.button("Tag"):
+    text = st.text_area(
+        "",
+        placeholder="Enter text here",
+        height=650
+    )
+    if st.button("Run Tagging"):
         result = bioTag(text, biotag_dic, nn_model, onlyLongest=True, abbrRecog=True, Threshold=0.95)
         st.write(result)
 
