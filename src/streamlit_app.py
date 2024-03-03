@@ -26,12 +26,14 @@ def load_model():
 
 
 def main():
+    st.set_page_config(page_title="PhenoTagger", page_icon="🩺", layout="wide")
+
     nltk.download('punkt')
     nltk.download('averaged_perceptron_tagger')
     nltk.download('wordnet')
     biotag_dic, nn_model = load_model()
-    
-    st.title("BioTagger")
+
+    st.title("PhenoTagger")
     text = st.text_area("Enter text here")
     if st.button("Tag"):
         result = bioTag(text, biotag_dic, nn_model, onlyLongest=True, abbrRecog=True, Threshold=0.95)
