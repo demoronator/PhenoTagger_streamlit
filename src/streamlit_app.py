@@ -28,6 +28,7 @@ def load_model():
 def main():
     nltk.download('punkt')
     nltk.download('averaged_perceptron_tagger')
+    nltk.download('wordnet')
     biotag_dic, nn_model = load_model()
     
     st.title("BioTagger")
