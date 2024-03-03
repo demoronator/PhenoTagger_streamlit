@@ -1,4 +1,5 @@
 import streamlit as st
+import nltk
 from tagging_text import bioTag
 from dic_ner import dic_ont
 from nn_model import bioTag_BERT
@@ -25,6 +26,7 @@ def load_model():
 
 
 def main():
+    nltk.download('punkt')
     biotag_dic, nn_model = load_model()
     
     st.title("BioTagger")
