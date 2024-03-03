@@ -50,7 +50,12 @@ def main():
         filename='pytorch_model.bin',
         local_dir='models/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext/'
     )
-    
+    hf_hub_download(
+        repo_id='lingbionlp/PhenoTagger_v1.2',
+        filename='pubmedbert_PT_v1.2.h5',
+        local_dir='models/'
+    )
+
     biotag_dic, nn_model = load_model()
 
     st.title("PhenoTagger")
