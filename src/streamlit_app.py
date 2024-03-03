@@ -26,7 +26,7 @@ def load_model():
 
 
 def main():
-    st.set_page_config(page_title="PhenoTagger", page_icon="🩺", layout="wide")
+    st.set_page_config(page_title="PhenoTagger", page_icon="🩺")
 
     nltk.download('punkt')
     nltk.download('averaged_perceptron_tagger')
