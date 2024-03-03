@@ -1,5 +1,6 @@
 import streamlit as st
 import nltk
+from huggingface_hub import hf_hub_download
 from tagging_text import bioTag
 from dic_ner import dic_ont
 from nn_model import bioTag_BERT
@@ -43,6 +44,13 @@ def main():
     nltk.download('punkt')
     nltk.download('averaged_perceptron_tagger')
     nltk.download('wordnet')
+    
+    hf_hub_download(
+        repo_id='microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext',
+        filename='pytorch_model.bin',
+        local_dir='models/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext/'
+    )
+    
     biotag_dic, nn_model = load_model()
 
     st.title("PhenoTagger")
