@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import nltk
 from huggingface_hub import hf_hub_download
 from tagging_text import bioTag
@@ -25,6 +26,29 @@ def load_model():
 
     return biotag_dic, nn_model
 
+def check_and_download_models():
+    nltk.download('punkt')
+    nltk.download('averaged_perceptron_tagger')
+    nltk.download('wordnet')
+
+    if not os.path.exists(
+        'models/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext/pytorch_model.bin'
+    ):     
+        hf_hub_download(
+            repo_id='microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext',
+            filename='pytorch_model.bin',
+            local_dir='models/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext/'
+        )
+
+    if not os.path.exists(
+        'models/pubmedbert_PT_v1.2.h5'
+    ):
+        hf_hub_download(
+            repo_id='lingbionlp/PhenoTagger_v1.2',
+            filename='pubmedbert_PT_v1.2.h5',
+            local_dir='models/'
+        )
+
 sample_text=\
 """Client’s Subjective Concerns/Chief Complaint: “I’m starting to feel more depressed.” Client noted concerns about his mood, endorsing depressed mood, lethargy, insomnia, loss of energy and motivation, and urges to isolate from his romantic partner. 
 
@@ -40,22 +64,7 @@ footer_text=\
 
 def main():
     st.set_page_config(page_title="PhenoTagger", page_icon="🩺")
-
-    nltk.download('punkt')
-    nltk.download('averaged_perceptron_tagger')
-    nltk.download('wordnet')
-    
-    hf_hub_download(
-        repo_id='microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext',
-        filename='pytorch_model.bin',
-        local_dir='models/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext/'
-    )
-    hf_hub_download(
-        repo_id='lingbionlp/PhenoTagger_v1.2',
-        filename='pubmedbert_PT_v1.2.h5',
-        local_dir='models/'
-    )
-
+    check_and_download_models()
     biotag_dic, nn_model = load_model()
 
     st.title("PhenoTagger")
